@@ -1,0 +1,68 @@
+{
+  "level": "Advanced",
+  "tier_scope": ["tier1", "tier2", "tier3"],
+  "generated_at": "2026-01-09",
+  "goals": [
+    "Master ML/AI engineering end-to-end",
+    "Build production-ready RAG and LLM systems",
+    "Learn cloud deployment with Kubernetes",
+    "Develop expertise in distributed systems",
+    "Build a strong portfolio for AI engineering roles"
+  ],
+  "constraints": {
+    "hours_per_week": 15,
+    "preferred_times": ["evenings", "weekends"],
+    "learning_style": "hands-on projects",
+    "blockers": []
+  },
+  "schedule": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "current_month": 1,
+    "current_week": 1
+  },
+  "stack_focus": {
+    "tier1": [
+      "RNN", "LSTM", "Word2Vec", "GloVe", "FastText", "YOLO",
+      "Bash", "Shell Scripting", "GraphQL",
+      "Flask", "Django",
+      "NLTK", "Dash",
+      "Metabase"
+    ],
+    "tier2": [
+      "MLOps (basics)", "DevOps (basics)", "CI/CD", "NoSQL", "Embedding Models", "RAG Systems",
+      "CNN", "GAN", "GPT", "BERT", "T5", "PEFT", "LoRA/QLoRA",
+      "n8n",
+      "PostgreSQL", "MongoDB", "Redis", "DynamoDB", "Elasticsearch", "OpenSearch",
+      "ClickHouse", "Snowflake", "Redshift", "BigQuery", "Synapse", "Cosmos DB", "ADLS",
+      "Neo4j", "TigerGraph", "JanusGraph", "Neptune",
+      "Pinecone", "Qdrant", "Weaviate", "Milvus", "FAISS",
+      "FastAPI", "React", "Next.js", "Spring Boot",
+      "SciPy", "PyTorch", "TensorFlow", "JAX", "PyMC", "NumPyro",
+      "OpenCV", "Hugging Face", "LangChain", "LangGraph", "LlamaIndex", "GenSim",
+      "Prometheus", "Grafana", "Datadog", "CloudWatch",
+      "Docker", "GitHub Actions", "Jenkins", "GitLab CI", "CircleCI", "Bitbucket", "Travis CI",
+      "Airflow", "Azure Data Factory", "dbt", "MLflow",
+      "Databricks/Azure Databricks", "Azure DevOps", "SageMaker", "Vertex AI", "Bedrock",
+      "Azure AI Foundry", "Azure ML", "Kubeflow (intro)",
+      "OpenAI Agent Evals", "OpenAI Trace Grading", "OpenAI Tools File Search/Web Search",
+      "S3", "Athena", "EventBridge", "API Gateway", "Lambda",
+      "Azure Functions", "Azure Stream Analytics", "Azure Container Apps"
+    ],
+    "tier3": [
+      "OpenAI Responses API", "OpenAI Realtime API", "MCP", "A2A",
+      "Kafka", "RabbitMQ", "Kinesis", "Spark", "Hadoop", "Hive", "Pig",
+      "Kubernetes", "AKS", "ECS", "Kubeflow (platform-grade)",
+      "ONNX", "TensorRT", "CUDA", "TFLite",
+      "Federated Learning", "NVIDIA FLARE", "Reinforcement Learning",
+      "Graph Neural Networks", "Network Analysis",
+      "Scala", "C++", "Java-for-big-data",
+      "ArcGIS (optional)", "OpenEmbedded", "YOCTO (optional)"
+    ]
+  },
+  "preferences": {
+    "notification_frequency": "weekly",
+    "adaptation_threshold": 6.0,
+    "auto_approve_minor_changes": false
+  }
+}

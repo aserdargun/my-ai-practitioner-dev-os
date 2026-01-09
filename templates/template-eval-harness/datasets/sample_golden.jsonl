@@ -1,0 +1,8 @@
+{"input": "What is 2 + 2?", "expected": "4", "metadata": {"category": "math", "difficulty": "easy"}}
+{"input": "What is the capital of France?", "expected": "Paris", "metadata": {"category": "geography", "difficulty": "easy"}}
+{"input": "Who wrote Romeo and Juliet?", "expected": "Shakespeare", "metadata": {"category": "literature", "difficulty": "medium"}}
+{"input": "What year did World War II end?", "expected": "1945", "metadata": {"category": "history", "difficulty": "medium"}}
+{"input": "What is the chemical symbol for water?", "expected": "H2O", "metadata": {"category": "science", "difficulty": "easy"}}
+{"input": "What is the largest planet in our solar system?", "expected": "Jupiter", "metadata": {"category": "science", "difficulty": "easy"}}
+{"input": "What is the square root of 144?", "expected": "12", "metadata": {"category": "math", "difficulty": "medium"}}
+{"input": "Who painted the Mona Lisa?", "expected": "Leonardo da Vinci", "metadata": {"category": "art", "difficulty": "medium"}}

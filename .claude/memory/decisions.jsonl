@@ -1,0 +1,2 @@
+{"timestamp": "2026-01-09T00:00:00Z", "decision": "level_selected", "value": "Advanced", "rationale": "User selected Advanced level for comprehensive Tier 1 + 2 + 3 coverage", "approved_by": "user"}
+{"timestamp": "2026-01-09T00:00:00Z", "decision": "stack_selected", "value": "MY_STACK.md", "rationale": "User provided custom stack with specific technology selections", "approved_by": "user"}

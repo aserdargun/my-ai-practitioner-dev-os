@@ -1,0 +1,5 @@
+{"query": "What is machine learning?", "expected_keywords": ["algorithm", "data", "learn", "pattern"], "expected_sources": ["ml_intro.txt"]}
+{"query": "How does RAG work?", "expected_keywords": ["retrieval", "generation", "context", "documents"], "expected_sources": ["rag_overview.md"]}
+{"query": "What are embeddings?", "expected_keywords": ["vector", "representation", "semantic", "dimension"], "expected_sources": ["embeddings.txt"]}
+{"query": "Explain neural networks", "expected_keywords": ["layer", "neuron", "weight", "activation"], "expected_sources": ["neural_nets.md"]}
+{"query": "What is transfer learning?", "expected_keywords": ["pretrained", "fine-tune", "domain", "model"], "expected_sources": ["transfer_learning.txt"]}
