@@ -235,3 +235,74 @@ test 0.1 0.2 0.3 0.4
         assert embeddings.vocab_size == 0
         assert embeddings.dimension == 0
         assert len(embeddings) == 0
+
+    def test_load_word2vec_binary_format(self):
+        """Test loading Word2Vec binary format."""
+        # Create a binary Word2Vec file
+        # Format: header line "vocab_size dim\n" followed by
+        # word + space + binary_vector for each word
+        vocab_size = 3
+        dim = 4
+        words = ["king", "queen", "man"]
+        vectors = [
+            np.array([0.9, 0.1, 0.0, 0.5], dtype=np.float32),
+            np.array([0.85, 0.15, 0.0, 0.5], dtype=np.float32),
+            np.array([0.5, 0.1, 0.0, 0.9], dtype=np.float32),
+        ]
+
+        with tempfile.NamedTemporaryFile(
+            mode="wb", suffix=".bin", delete=False
+        ) as f:
+            # Write header
+            header = f"{vocab_size} {dim}\n"
+            f.write(header.encode("utf-8"))
+
+            # Write each word and vector
+            for word, vec in zip(words, vectors):
+                f.write(word.encode("utf-8"))
+                f.write(b" ")
+                f.write(vec.tobytes())
+
+            f.flush()
+
+            # Load and verify
+            embeddings = WordEmbeddings()
+            embeddings.load_word2vec_format(f.name, binary=True)
+
+            assert embeddings.vocab_size == 3
+            assert embeddings.dimension == 4
+            assert "king" in embeddings
+            assert "queen" in embeddings
+            assert "man" in embeddings
+
+            # Verify vector values
+            assert np.allclose(embeddings["king"], vectors[0])
+            assert np.allclose(embeddings["queen"], vectors[1])
+
+    def test_load_word2vec_binary_with_limit(self):
+        """Test loading binary format with vocabulary limit."""
+        vocab_size = 5
+        dim = 3
+        words = ["word1", "word2", "word3", "word4", "word5"]
+        vec = np.array([0.1, 0.2, 0.3], dtype=np.float32)
+
+        with tempfile.NamedTemporaryFile(
+            mode="wb", suffix=".bin", delete=False
+        ) as f:
+            header = f"{vocab_size} {dim}\n"
+            f.write(header.encode("utf-8"))
+
+            for word in words:
+                f.write(word.encode("utf-8"))
+                f.write(b" ")
+                f.write(vec.tobytes())
+
+            f.flush()
+
+            embeddings = WordEmbeddings()
+            embeddings.load_word2vec_format(f.name, binary=True, limit=2)
+
+            assert embeddings.vocab_size == 2
+            assert "word1" in embeddings
+            assert "word2" in embeddings
+            assert "word3" not in embeddings
