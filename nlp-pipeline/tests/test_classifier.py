@@ -305,3 +305,28 @@ class TestEmbeddingClassifier:
             clf.fit(TRAIN_TEXTS, TRAIN_LABELS)
             predictions = clf.predict(TEST_TEXTS)
             assert len(predictions) == 2
+
+    def test_zero_vector_similarity(self):
+        """Test that zero vectors return 0 similarity."""
+        # Create embeddings with a zero vector
+        embeddings = WordEmbeddings.from_dict({
+            "good": [0.9, 0.1, 0.0],
+            "bad": [0.1, 0.9, 0.0],
+            "zero": [0.0, 0.0, 0.0],  # Zero vector
+        })
+
+        clf = EmbeddingClassifier(embeddings, strategy="knn", k=1)
+        clf.fit(["good"], ["positive"])
+
+        # Text with only zero-vector word should still return a prediction
+        # (falls back to most common class)
+        prediction = clf.predict(["zero"])[0]
+        assert prediction == "positive"
+
+        # Verify _cosine_similarity handles zero vectors
+        import numpy as np
+        zero_vec = np.array([0.0, 0.0, 0.0])
+        normal_vec = np.array([1.0, 0.0, 0.0])
+        assert clf._cosine_similarity(zero_vec, normal_vec) == 0.0
+        assert clf._cosine_similarity(normal_vec, zero_vec) == 0.0
+        assert clf._cosine_similarity(zero_vec, zero_vec) == 0.0
