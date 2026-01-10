@@ -1,6 +1,5 @@
 """Tests for the Pipeline class."""
 
-import pytest
 
 from nlp_pipeline import Pipeline
 

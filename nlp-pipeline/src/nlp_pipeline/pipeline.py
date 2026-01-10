@@ -7,7 +7,6 @@ from nlp_pipeline.stemmer import Stemmer
 from nlp_pipeline.stopwords import StopwordRemover
 from nlp_pipeline.tokenizer import Tokenizer
 
-
 NormalizerType = Literal["stem", "lemmatize", None]
 
 

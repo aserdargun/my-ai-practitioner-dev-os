@@ -1,6 +1,5 @@
 """Tests for the Tokenizer class."""
 
-import pytest
 
 from nlp_pipeline.tokenizer import Tokenizer
 

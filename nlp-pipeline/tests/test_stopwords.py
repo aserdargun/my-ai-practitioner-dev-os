@@ -1,6 +1,5 @@
 """Tests for the StopwordRemover class."""
 
-import pytest
 
 from nlp_pipeline import StopwordRemover, Tokenizer
 

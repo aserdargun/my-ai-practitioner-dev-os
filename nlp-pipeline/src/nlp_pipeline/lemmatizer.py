@@ -5,7 +5,6 @@ from typing import Literal
 import nltk
 from nltk.stem import WordNetLemmatizer
 
-
 POS = Literal["noun", "verb", "adj", "adv"]
 
 

@@ -1,6 +1,5 @@
 """Tests for the Lemmatizer class."""
 
-import pytest
 
 from nlp_pipeline import Lemmatizer, Tokenizer
 

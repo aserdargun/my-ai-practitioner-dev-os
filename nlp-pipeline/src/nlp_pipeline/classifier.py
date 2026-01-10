@@ -165,7 +165,7 @@ class NaiveBayesClassifier:
             Accuracy (0-1).
         """
         predictions = self.predict(texts)
-        correct = sum(p == l for p, l in zip(predictions, labels))
+        correct = sum(pred == true for pred, true in zip(predictions, labels))
         return correct / len(labels) if labels else 0.0
 
     @property
@@ -335,7 +335,7 @@ class EmbeddingClassifier:
             Accuracy (0-1).
         """
         predictions = self.predict(texts)
-        correct = sum(p == l for p, l in zip(predictions, labels))
+        correct = sum(pred == true for pred, true in zip(predictions, labels))
         return correct / len(labels) if labels else 0.0
 
     @property

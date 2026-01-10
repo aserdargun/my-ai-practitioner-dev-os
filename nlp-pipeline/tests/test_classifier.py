@@ -1,15 +1,13 @@
 """Tests for the text classifier module."""
 
 import pytest
-import numpy as np
 
 from nlp_pipeline import (
-    NaiveBayesClassifier,
     EmbeddingClassifier,
-    WordEmbeddings,
+    NaiveBayesClassifier,
     Pipeline,
+    WordEmbeddings,
 )
-
 
 # Sample training data for sentiment classification
 TRAIN_TEXTS = [
