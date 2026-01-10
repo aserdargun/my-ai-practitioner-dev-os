@@ -57,6 +57,30 @@ All functions should have docstrings explaining:
 
 This enables IDE autocomplete and serves as inline documentation.
 
+### 2026-01-10 — Test Edge Cases Early
+
+Add tests for edge cases (zero vectors, empty inputs, malformed data) early in development, not just happy-path tests.
+
+**Why it works:** The zero-vector similarity bug would have caused division-by-zero in production. Edge case tests caught it and improved coverage from 93% to 98%.
+
+**When to apply:** Any numeric computation, especially similarity/distance functions.
+
+### 2026-01-10 — Use sklearn-Style API for ML Components
+
+Implement `fit()`, `transform()`, `fit_transform()`, and method chaining for any ML pipeline component.
+
+**Why it works:** Familiar API reduces cognitive load. Method chaining enables clean one-liners: `Pipeline().fit(X).transform(new_X)`. Easy to swap components.
+
+**When to apply:** Any data transformation or ML pipeline component.
+
+### 2026-01-10 — Target 90%+ Coverage, Not 100%
+
+Aim for 90%+ coverage. The last 5-10% often covers rare edge cases (file I/O errors, network timeouts) that require complex mocking for little value.
+
+**Why it works:** 98% coverage with 117 tests provides high confidence. Remaining 2% is NLTK download paths and binary file edge cases—low-risk code.
+
+**When to apply:** Test strategy for any project. Focus effort on business logic.
+
 ---
 
 ## Learning Strategies
@@ -74,6 +98,12 @@ When learning new concepts, observing code being built first and then trying sim
 
 ## Tools & Workflows
 
-*(Add tool and workflow tips here)*
+### 2026-01-10 — Run Linter Before Committing
+
+Run `ruff check --fix` before every commit. Configure as pre-commit hook.
+
+**Why it works:** Caught 11 issues (unused imports, ambiguous variable names, import sorting) that would have accumulated as tech debt. Auto-fix handles 80%+ of issues.
+
+**When to apply:** Every Python project from day one.
 
 ---
