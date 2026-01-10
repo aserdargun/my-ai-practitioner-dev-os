@@ -37,13 +37,38 @@ Why it works or when to apply it.
 
 ## Technical
 
-*(Add technical learnings here)*
+### 2026-01-10 — Comprehensive Testing Strategy
+
+Every module should have tests covering:
+- Happy path (normal usage)
+- Edge cases (empty inputs, special characters)
+- Error conditions (invalid parameters)
+- Integration with other components
+
+114 tests for 8 modules = ~14 tests per module average. This provides confidence when refactoring.
+
+### 2026-01-10 — Docstrings for All Functions
+
+All functions should have docstrings explaining:
+- Purpose (what it does)
+- Args (parameters and types)
+- Returns (what it gives back)
+- Raises (exceptions if any)
+
+This enables IDE autocomplete and serves as inline documentation.
 
 ---
 
 ## Learning Strategies
 
-*(Add learning strategy insights here)*
+### 2026-01-10 — Observe-Then-Implement Learning
+
+When learning new concepts, observing code being built first and then trying similar patterns yourself is effective. This approach:
+- Reduces cognitive load by separating "understanding" from "doing"
+- Allows you to see the full picture before diving into details
+- Makes it easier to ask targeted questions during implementation
+
+**When to apply:** New algorithms, unfamiliar libraries, complex system designs.
 
 ---
 
