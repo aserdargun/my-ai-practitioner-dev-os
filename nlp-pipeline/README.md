@@ -267,6 +267,48 @@ clf.predict(["Terrible film"])  # ['negative']
 clf.score(test_texts, test_labels)
 ```
 
+### Dashboard
+
+Interactive visualization for exploring word embeddings.
+
+```bash
+# Install dashboard dependencies
+pip install -e ".[dashboard]"
+
+# Run with sample embeddings
+python scripts/run_dashboard.py
+
+# Run with custom Word2Vec embeddings
+python scripts/run_dashboard.py --embeddings path/to/vectors.txt
+
+# Run with GloVe embeddings
+python scripts/run_dashboard.py --embeddings path/to/glove.txt --format glove
+
+# Limit vocabulary size (for large files)
+python scripts/run_dashboard.py --embeddings vectors.txt --limit 10000
+```
+
+Then open http://localhost:8050
+
+**Features:**
+- t-SNE visualization of embedding space
+- Similarity search — find words similar to a query
+- Word analogies — solve "king - man + woman = ?" style queries
+
+**Programmatic usage:**
+
+```python
+from nlp_pipeline import WordEmbeddings
+from nlp_pipeline.dashboard import run_dashboard
+
+# Load your embeddings
+embeddings = WordEmbeddings()
+embeddings.load_word2vec_format("vectors.txt")
+
+# Launch dashboard
+run_dashboard(embeddings, port=8050)
+```
+
 ## Running Tests
 
 ```bash
@@ -285,6 +327,8 @@ pytest --cov=nlp_pipeline
 nlp-pipeline/
 ├── pyproject.toml
 ├── README.md
+├── scripts/
+│   └── run_dashboard.py
 ├── src/
 │   └── nlp_pipeline/
 │       ├── __init__.py
@@ -294,16 +338,19 @@ nlp-pipeline/
 │       ├── lemmatizer.py
 │       ├── pipeline.py
 │       ├── embeddings.py
-│       └── classifier.py
+│       ├── classifier.py
+│       └── dashboard/
+│           ├── __init__.py
+│           └── app.py
 └── tests/
-    ├── __init__.py
     ├── test_tokenizer.py
     ├── test_stopwords.py
     ├── test_stemmer.py
     ├── test_lemmatizer.py
     ├── test_pipeline.py
     ├── test_embeddings.py
-    └── test_classifier.py
+    ├── test_classifier.py
+    └── test_dashboard.py
 ```
 
 ## Roadmap
@@ -315,3 +362,4 @@ nlp-pipeline/
 - [x] Unified Pipeline
 - [x] Word embeddings (Word2Vec, GloVe)
 - [x] Text classification (Naive Bayes, Embedding-based)
+- [x] Interactive dashboard (t-SNE visualization, similarity search, analogies)
