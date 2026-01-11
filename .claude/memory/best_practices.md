@@ -94,6 +94,14 @@ When learning new concepts, observing code being built first and then trying sim
 
 **When to apply:** New algorithms, unfamiliar libraries, complex system designs.
 
+### 2026-01-11 — Step-by-Step AI Implementation Beats Tutorials
+
+Step-by-step implementation with AI is more effective than watching tutorials. Build incrementally, ask questions as you go, and learn by doing.
+
+**Why it works:** You engage actively with the material, solve real problems in context, and can immediately apply what you learn. Tutorials are passive; pair programming is active.
+
+**When to apply:** Any new technology, algorithm, or concept. Start building immediately rather than "preparing" with videos.
+
 ---
 
 ## Tools & Workflows
