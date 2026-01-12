@@ -63,7 +63,7 @@ def explore_tensors():
 
     # Tensor properties
     # -----------------
-    print(f"\nTensor properties:")
+    print("\nTensor properties:")
     print(f"  Shape: {rand.shape}")
     print(f"  Dtype: {rand.dtype}")
     print(f"  Device: {rand.device}")
@@ -78,7 +78,7 @@ def explore_tensors():
     a = torch.tensor([[1, 2], [3, 4]], dtype=torch.float32)
     b = torch.tensor([[5, 6], [7, 8]], dtype=torch.float32)
 
-    print(f"\nTensor operations:")
+    print("\nTensor operations:")
     print(f"  a + b = \n{a + b}")
     print(f"  a * b (element-wise) = \n{a * b}")
     print(f"  a @ b (matrix multiply) = \n{a @ b}")
@@ -86,7 +86,7 @@ def explore_tensors():
     # Reshaping
     # ---------
     c = torch.arange(12)
-    print(f"\nReshaping:")
+    print("\nReshaping:")
     print(f"  Original: {c}")
     print(f"  Reshaped (3x4): \n{c.reshape(3, 4)}")
     print(f"  View (2x6): \n{c.view(2, 6)}")
@@ -338,7 +338,7 @@ def preview_rnn_concepts():
     lstm = lstm.to(DEVICE)
 
     output, (hidden, cell) = lstm(x)
-    print(f"  LSTM has TWO hidden states:")
+    print("  LSTM has TWO hidden states:")
     print(f"    hidden (h): {hidden.shape}")
     print(f"    cell (c): {cell.shape}")
     print("  The cell state is what makes LSTM better at long sequences!")

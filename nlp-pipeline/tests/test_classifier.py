@@ -330,3 +330,39 @@ class TestEmbeddingClassifier:
         assert clf._cosine_similarity(zero_vec, normal_vec) == 0.0
         assert clf._cosine_similarity(normal_vec, zero_vec) == 0.0
         assert clf._cosine_similarity(zero_vec, zero_vec) == 0.0
+
+    def test_predict_proba_centroid(self):
+        """Test probability predictions with centroid strategy."""
+        embeddings = create_sample_embeddings()
+        clf = EmbeddingClassifier(embeddings, strategy="centroid")
+        clf.fit(TRAIN_TEXTS, TRAIN_LABELS)
+
+        proba = clf.predict_proba(["love great amazing"])[0]
+        assert "positive" in proba
+        assert "negative" in proba
+        assert abs(sum(proba.values()) - 1.0) < 0.01  # Probabilities sum to 1
+        assert proba["positive"] > proba["negative"]  # Should favor positive
+
+    def test_predict_proba_knn(self):
+        """Test probability predictions with KNN strategy."""
+        embeddings = create_sample_embeddings()
+        clf = EmbeddingClassifier(embeddings, strategy="knn", k=3)
+        clf.fit(TRAIN_TEXTS, TRAIN_LABELS)
+
+        proba = clf.predict_proba(["hate terrible awful"])[0]
+        assert "positive" in proba
+        assert "negative" in proba
+        # KNN probabilities are vote proportions, should sum to 1
+        assert abs(sum(proba.values()) - 1.0) < 0.01
+        assert proba["negative"] > proba["positive"]  # Should favor negative
+
+    def test_predict_proba_unknown_words(self):
+        """Test predict_proba returns uniform distribution for unknown words."""
+        embeddings = create_sample_embeddings()
+        clf = EmbeddingClassifier(embeddings, strategy="centroid")
+        clf.fit(TRAIN_TEXTS, TRAIN_LABELS)
+
+        # All unknown words should return uniform probabilities
+        proba = clf.predict_proba(["xyz abc def"])[0]
+        assert abs(proba["positive"] - 0.5) < 0.01
+        assert abs(proba["negative"] - 0.5) < 0.01
