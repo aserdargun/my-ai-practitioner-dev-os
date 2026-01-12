@@ -324,6 +324,50 @@ class EmbeddingClassifier:
             return 0.0
         return float(dot / (norm1 * norm2))
 
+    def predict_proba(self, texts: list[str]) -> list[dict[str, float]]:
+        """Predict class probabilities for texts.
+
+        Args:
+            texts: Texts to classify.
+
+        Returns:
+            List of {class: probability} dictionaries.
+        """
+        return [self._predict_proba_one(text) for text in texts]
+
+    def _predict_proba_one(self, text: str) -> dict[str, float]:
+        """Predict class probabilities for a single text."""
+        vec = self._text_to_vector(text)
+
+        if vec is None:
+            # Return uniform probabilities if no embedding coverage
+            n_classes = len(self._classes)
+            return {cls: 1.0 / n_classes for cls in self._classes}
+
+        if self.strategy == "centroid":
+            # Calculate similarities to each centroid
+            similarities = {}
+            for cls, centroid in self._centroids.items():
+                similarities[cls] = self._cosine_similarity(vec, centroid)
+
+            # Convert to probabilities using softmax
+            max_sim = max(similarities.values())
+            exp_sims = {cls: np.exp(sim - max_sim) for cls, sim in similarities.items()}
+            total = sum(exp_sims.values())
+            return {cls: exp_sim / total for cls, exp_sim in exp_sims.items()}
+        else:
+            # KNN: use vote proportions as probabilities
+            similarities = []
+            for train_vec, label in zip(self._training_vectors, self._training_labels):
+                sim = self._cosine_similarity(vec, train_vec)
+                similarities.append((sim, label))
+
+            similarities.sort(reverse=True)
+            top_k = similarities[: self.k]
+
+            votes = Counter(label for _, label in top_k)
+            return {cls: votes.get(cls, 0) / self.k for cls in self._classes}
+
     def score(self, texts: list[str], labels: list[str]) -> float:
         """Calculate accuracy on test data.
 
