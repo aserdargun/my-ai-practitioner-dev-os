@@ -398,15 +398,39 @@ With coverage:
 pytest --cov=nlp_pipeline
 ```
 
+### Jupyter Notebook
+
+Explore embeddings interactively in the notebook.
+
+```bash
+# Install Jupyter
+pip install jupyter
+
+# Launch notebook
+jupyter notebook notebooks/embedding_exploration.ipynb
+```
+
+**Topics covered:**
+- Loading and inspecting embeddings
+- Similarity search
+- Word analogies (king - man + woman = queen)
+- t-SNE visualization
+- Text classification with embeddings
+- Vector arithmetic exploration
+- Similarity matrices
+
 ## Project Structure
 
 ```
 nlp-pipeline/
 ├── pyproject.toml
 ├── README.md
+├── notebooks/
+│   └── embedding_exploration.ipynb
 ├── scripts/
 │   ├── run_dashboard.py
-│   └── run_graphql.py
+│   ├── run_graphql.py
+│   └── pytorch_foundations.py
 ├── src/
 │   └── nlp_pipeline/
 │       ├── __init__.py
@@ -447,3 +471,4 @@ nlp-pipeline/
 - [x] Text classification (Naive Bayes, Embedding-based)
 - [x] Interactive dashboard (t-SNE visualization, similarity search, analogies)
 - [x] GraphQL API for embeddings
+- [x] Jupyter notebook for embedding exploration
