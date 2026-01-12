@@ -309,6 +309,83 @@ embeddings.load_word2vec_format("vectors.txt")
 run_dashboard(embeddings, port=8050)
 ```
 
+### GraphQL API
+
+Query word embeddings via GraphQL.
+
+```bash
+# Install GraphQL dependencies
+pip install -e ".[graphql]"
+
+# Run with sample embeddings
+python scripts/run_graphql.py
+
+# Run with custom embeddings
+python scripts/run_graphql.py --embeddings path/to/vectors.txt
+
+# Run on different port
+python scripts/run_graphql.py --port 8080
+```
+
+Then open http://localhost:5000/graphql for the GraphiQL interface.
+
+**Available Queries:**
+
+```graphql
+# Get embedding info
+{ info { vocabSize dimension } }
+
+# Check if word exists
+{ hasWord(word: "king") }
+
+# Get word vector
+{ wordVector(word: "king") { word vector dimension } }
+
+# Calculate similarity between words
+{ similarity(word1: "king", word2: "queen") }
+
+# Find similar words
+{ mostSimilar(word: "king", topN: 5) { word similarity } }
+
+# Solve word analogies (king - man + woman = ?)
+{
+  analogy(
+    positive: ["king", "woman"],
+    negative: ["man"],
+    topN: 3
+  ) { word similarity }
+}
+
+# Find the word that doesn't match
+{ doesntMatch(words: ["king", "queen", "prince", "car"]) }
+
+# Search vocabulary by prefix
+{ searchVocab(prefix: "ki", limit: 10) }
+```
+
+**Programmatic usage:**
+
+```python
+from nlp_pipeline import WordEmbeddings
+from nlp_pipeline.graphql import create_app
+
+# Load embeddings
+embeddings = WordEmbeddings()
+embeddings.load_word2vec_format("vectors.txt")
+
+# Create and run Flask app
+app = create_app(embeddings)
+app.run(port=5000)
+```
+
+**Example curl request:**
+
+```bash
+curl -X POST http://localhost:5000/graphql \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ mostSimilar(word: \"king\", topN: 3) { word similarity } }"}'
+```
+
 ## Running Tests
 
 ```bash
@@ -328,7 +405,8 @@ nlp-pipeline/
 ├── pyproject.toml
 ├── README.md
 ├── scripts/
-│   └── run_dashboard.py
+│   ├── run_dashboard.py
+│   └── run_graphql.py
 ├── src/
 │   └── nlp_pipeline/
 │       ├── __init__.py
@@ -339,8 +417,12 @@ nlp-pipeline/
 │       ├── pipeline.py
 │       ├── embeddings.py
 │       ├── classifier.py
-│       └── dashboard/
+│       ├── dashboard/
+│       │   ├── __init__.py
+│       │   └── app.py
+│       └── graphql/
 │           ├── __init__.py
+│           ├── schema.py
 │           └── app.py
 └── tests/
     ├── test_tokenizer.py
@@ -350,7 +432,8 @@ nlp-pipeline/
     ├── test_pipeline.py
     ├── test_embeddings.py
     ├── test_classifier.py
-    └── test_dashboard.py
+    ├── test_dashboard.py
+    └── test_graphql.py
 ```
 
 ## Roadmap
@@ -363,3 +446,4 @@ nlp-pipeline/
 - [x] Word embeddings (Word2Vec, GloVe)
 - [x] Text classification (Naive Bayes, Embedding-based)
 - [x] Interactive dashboard (t-SNE visualization, similarity search, analogies)
+- [x] GraphQL API for embeddings
