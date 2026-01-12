@@ -102,6 +102,14 @@ Step-by-step implementation with AI is more effective than watching tutorials. B
 
 **When to apply:** Any new technology, algorithm, or concept. Start building immediately rather than "preparing" with videos.
 
+### 2026-01-12 — Research New Tech Immediately with AI
+
+When encountering a new technology, immediately research it with AI assistance and ask clarifying questions. Don't wait — early understanding compounds.
+
+**Why it works:** Discovered GraphQL late and felt behind. Immediate research would have connected concepts to use cases faster. Asking more questions early prevents the "I should have known this" feeling.
+
+**When to apply:** Any unfamiliar term, library, or pattern. Make it a habit to pause and ask before moving on.
+
 ---
 
 ## Tools & Workflows
