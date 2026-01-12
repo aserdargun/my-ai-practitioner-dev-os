@@ -85,8 +85,8 @@ def main():
     parser.add_argument(
         "--port",
         type=int,
-        default=5000,
-        help="Port to run server on (default: 5000)",
+        default=8081,
+        help="Port to run server on (default: 8081)",
     )
     parser.add_argument(
         "--embeddings",

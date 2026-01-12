@@ -327,7 +327,7 @@ python scripts/run_graphql.py --embeddings path/to/vectors.txt
 python scripts/run_graphql.py --port 8080
 ```
 
-Then open http://localhost:5000/graphql for the GraphiQL interface.
+Then open http://localhost:8081/graphql for the GraphiQL interface.
 
 **Available Queries:**
 
@@ -375,13 +375,13 @@ embeddings.load_word2vec_format("vectors.txt")
 
 # Create and run Flask app
 app = create_app(embeddings)
-app.run(port=5000)
+app.run(port=8081)
 ```
 
 **Example curl request:**
 
 ```bash
-curl -X POST http://localhost:5000/graphql \
+curl -X POST http://localhost:8081/graphql \
   -H "Content-Type: application/json" \
   -d '{"query": "{ mostSimilar(word: \"king\", topN: 3) { word similarity } }"}'
 ```
