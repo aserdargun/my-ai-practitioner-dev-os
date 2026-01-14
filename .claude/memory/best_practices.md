@@ -110,6 +110,21 @@ When encountering a new technology, immediately research it with AI assistance a
 
 **When to apply:** Any unfamiliar term, library, or pattern. Make it a habit to pause and ask before moving on.
 
+### 2026-01-14 — Include Exercises and Questions in Learning Notebooks
+
+Add practice exercises and comprehension questions at the end of each notebook section. This reinforces independent practice and active recall.
+
+**Structure:**
+1. Concept explanation with runnable examples
+2. Guided walkthrough
+3. **Exercises** — incomplete code for learner to finish
+4. **Questions** — "What would happen if...?" or "Why does...?"
+5. **Research homework** — topics to explore before next session
+
+**Why it works:** Passive reading doesn't build skills. Exercises force active engagement. Questions trigger reflection. Research homework builds curiosity and preparation for upcoming topics.
+
+**When to apply:** Any educational notebook or tutorial. Especially important for foundational concepts.
+
 ---
 
 ## Tools & Workflows
