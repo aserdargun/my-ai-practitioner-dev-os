@@ -125,6 +125,21 @@ Add practice exercises and comprehension questions at the end of each notebook s
 
 **When to apply:** Any educational notebook or tutorial. Especially important for foundational concepts.
 
+### 2026-01-14 — Active Learning Through Exercises
+
+Step-by-step notebook learning with exercises reinforces retention better than passive reading.
+
+**Structure for effective notebooks:**
+1. Concept explanation with minimal, runnable examples
+2. Guided walkthrough building complexity gradually
+3. Exercises with incomplete code for learner to complete
+4. Comprehension questions ("What would happen if...?")
+5. Research homework for the next session
+
+**Why it works:** Active recall and practice create stronger neural pathways than passive consumption. Exercises force engagement; questions trigger reflection; homework builds anticipation.
+
+**When to apply:** Any technical learning — tutorials, documentation, onboarding materials. Especially valuable for foundational concepts that later work builds upon.
+
 ---
 
 ## Tools & Workflows
